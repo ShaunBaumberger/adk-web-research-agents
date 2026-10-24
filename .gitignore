@@ -1,0 +1,14 @@
+# Secrets: API keys live here, never commit them
+.env
+**/.env
+
+# Local Python environment
+.venv/
+
+# ADK's local chat history
+.adk/
+**/.adk/
+
+# macOS / Python clutter
+.DS_Store
+__pycache__/
