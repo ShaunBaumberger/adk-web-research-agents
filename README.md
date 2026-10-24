@@ -21,7 +21,7 @@ All agents use `gemini-3.5-flash`.
 You need Python 3.10+ and Node.js (for `npx`), plus two API keys: Gemini ([Google AI Studio](https://aistudio.google.com/apikey)) and [Firecrawl](https://www.firecrawl.dev).
 
 ```bash
-git clone https://github.com/sbaumberger/adk-web-research-agents.git
+git clone https://github.com/ShaunBaumberger/adk-web-research-agents.git
 cd adk-web-research-agents
 python3 -m venv .venv
 source .venv/bin/activate
