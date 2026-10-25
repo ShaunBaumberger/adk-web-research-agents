@@ -16,6 +16,12 @@ web_research_coordinator ──► research_agent ──► summary_agent
 
 All agents use `gemini-3.5-flash`.
 
+## Bonus: code execution agent
+
+[code_agent](code_agent/agent.py) is a single Python agent with ADK's `BuiltInCodeExecutor`. For calculations, dates and data, Gemini writes Python, runs it in Google's sandbox, and answers from the real output instead of guessing. Try *"What is 48,273 × 9,184?"* or *"On which weekday was 1 August 1291?"* and open the event in `adk web` to see the code and its result.
+
+It only needs a Gemini API key: `cp code_agent/.env.example code_agent/.env` and fill it in.
+
 ## Run it yourself
 
 You need Python 3.10+ and Node.js (for `npx`), plus two API keys: Gemini ([Google AI Studio](https://aistudio.google.com/apikey)) and [Firecrawl](https://www.firecrawl.dev).
