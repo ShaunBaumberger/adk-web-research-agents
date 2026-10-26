@@ -22,6 +22,19 @@ All agents use `gemini-3.5-flash`.
 
 It only needs a Gemini API key: `cp code_agent/.env.example code_agent/.env` and fill it in.
 
+## Bonus: two agents talking over A2A
+
+[serve_code_agent.py](serve_code_agent.py) runs `code_agent` as a standalone [A2A](https://a2a-protocol.org) service on port 8001 and publishes its agent card at `http://localhost:8001/.well-known/agent-card.json`. [trip_planner](trip_planner/agent.py) is a separate agent that only knows that address: it adds the calculator as a `RemoteA2aAgent` and hands every calculation over the network.
+
+Run them in two terminals from the repository root (after `cp trip_planner/.env.example trip_planner/.env` and adding your key):
+
+```bash
+uvicorn serve_code_agent:app --port 8001   # terminal 1: the calculator service
+adk web .                                  # terminal 2: pick trip_planner
+```
+
+Ask something like *"4 people, train CHF 86 per person one way, 2 hotel rooms at CHF 240 for 3 nights: total for the round trip?"* and watch terminal 1 log the `GET` for the agent card and the `POST` with the task.
+
 ## Run it yourself
 
 You need Python 3.10+ and Node.js (for `npx`), plus two API keys: Gemini ([Google AI Studio](https://aistudio.google.com/apikey)) and [Firecrawl](https://www.firecrawl.dev).
